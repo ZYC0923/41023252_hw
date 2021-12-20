@@ -2,7 +2,7 @@
         <head>
         <title>CMSTemplate</title>
         <meta charset="utf-8">
-<meta property="head" content="H3">
+<meta property="head" content="H1">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700,900" rel="stylesheet">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
@@ -128,7 +128,7 @@ img.add_border {
                             <li><a href="./../blog/index.html">blog</a></li>
                         </ul>
                       </li>
-                     <li class='has-children'><a href='About.html'>About</a><ul class='dropdown'><li><a href='Lua 解譯.html'>Lua 解譯</a></li></ul><li class='has-children'><a href='Wink.html'>Wink</a><ul class='dropdown'><li><a href='Add Wink.html'>Add Wink</a><li><a href='建立網頁.html'>建立網頁</a><li class='has-children'><a href='基本操作.html'>基本操作</a><ul class='dropdown'><li><a href='客製化.html'>客製化</a><li><a href='編輯網頁內容.html'>編輯網頁內容</a><li><a href='上傳與引用檔案.html'>上傳與引用檔案</a><li><a href='上傳與引用圖片.html'>上傳與引用圖片</a><li><a href='嵌入程式碼.html'>嵌入程式碼</a><li><a href='嵌入影片檔.html'>嵌入影片檔</a><li><a href='檢視 STL.html'>檢視 STL</a></li></ul><li><a href='置入 disqus.html'>置入 disqus</a><li><a href='Gitlab 同步.html'>Gitlab 同步</a><li><a href='Heroku 部署.html'>Heroku 部署</a><li><a href='Fossil SCM.html'>Fossil SCM</a><li><a href='標題選擇.html'>標題選擇</a><li><a href='靜態網頁 404.html'>靜態網頁 404</a><li><a href='動態網站錯誤.html'>動態網站錯誤</a><li class='has-children'><a href='已知問題.html'>已知問題</a><ul class='dropdown'><li><a href='IPv6.html'>IPv6</a><li><a href='上傳資料引用.html'>上傳資料引用</a><li><a href='MathJax.html'>MathJax</a><li><a href='html 分頁.html'>html 分頁</a><li><a href='靜態搜尋.html'>靜態搜尋</a><li><a href='template.html'>template</a></li></ul><li><a href='ajax.html'>ajax</a><li><a href='black.html'>black</a><li><a href='summernote.html'>summernote</a></li></ul><li><a href='HW1.html'>HW1</a></li>
+                     <li><a href='About.html'>About</a><li class='has-children'><a href='HW1.html'>HW1</a><ul class='dropdown'><li><a href='run.html'>run</a></li></ul><li><a href='HW2.html'>HW2</a><li><a href='HW3.html'>HW3</a><li class='has-children'><a href='EXAM.html'>EXAM</a><ul class='dropdown'><li><a href='W13.html'>W13</a></li>
                       </ul>
                 </nav>
               </div>
@@ -139,58 +139,127 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">上傳與引用圖片 << <a href='上傳與引用圖片.html'>Previous</a> <a href='嵌入影片檔.html'>Next</a> >> 嵌入影片檔<br /><h1>嵌入程式碼</h1>
-<p>利用 Insert/Edit code 功能, 可以嵌入各種程式碼:</p>
-<pre class="brush:dart;auto-links:false;toolbar:false" contenteditable="false">// 下列 Dart 程式, 利用 Runge Kutta 迭代運算法, 解常微分方程式
-// 設 t 為時間, x 則設為物體的位移
-// dx / dt = (t - x)/2, 起始值 t0=0, x0=1, 求 t=2 時的 x 值
-//
-// 已知起始值 t0 與 x0 後, 可以利用下列 rungeKutta 函式, 以
-// h 為每步階增量值, 求 dxdt 常微分方程式任一 t 的對應值 x
-// 定義函式 rungeKutta, 共有四個輸入變數
-rungeKutta(t0, x0, t, h) {
-  // 利用步階增量值 h 與 t 的起始及終點值
-  // 計算需要迭代的次數 n
-  int n = ((t - t0) / h).toInt();
-  // 宣告 x 為雙浮點數, 且設為起始值 x0
-  double x = x0;
-  // 利用已知的 t0, x0, t 終點值與步階增量值 h, 迭代求 x 對應值
-  // 索引值 i 將每次增量 1, 從 i=1 執行 for 環圈至 i=n
-  for (int i = 1; i &lt;= n; i++) {
-    // 將此階段的 t 與 x 值代入 dxdt 函式求下列四個浮點變數值
-    double k1 = h * dxdt(t0, x);
-    double k2 = h * dxdt(t0 + 0.5 * h, x + 0.5 * k1);
-    double k3 = h * dxdt(t0 + 0.5 * h, x + 0.5 * k2);
-    double k4 = h * dxdt(t0 + h, x + k3);
-    // 利用上述四個變數值求此步階增量後的對應 x 值
-    x = x + (1.0 / 6.0) * (k1 + 2 * k2 + 2 * k3 + k4);
-    // 每次 for 迴圈執行最後, 準備計算下一個步階增量後的 x 對應值
-    // t 起始值配合步階增量值 h, 進行增量
-    t0 = t0 + h;
-  }
-  // 完成 for 迴圈迭代後, 傳回與 t 終點值對應的 x 值
-  return x;
-}
+    <div id="tipue_search_content">run << <a href='run.html'>Previous</a> <a href='HW3.html'>Next</a> >> HW3<br /><h1>HW2</h1>
+<p>在電腦輔助設計的新電腦上可以利用 USB 隨身碟設定所謂 Hybrid 可攜程式系統, 也就是 Python 與 Portablegit 使用 c:\2021_portable_kmol\data 目錄中的檔案, 而將 start_ipv4.bat, start_ipv6.bat, data, wscite, tmp 等目錄放在 USB 隨身碟.</p>
+<p>在電腦輔助設計室中, 以 USB 隨身碟啟動的 start_ipv4.bat 檔案內容: <a href="/get_page/downloads/start_ipv4_hybrid.txt">start_ipv4_hybrid.txt</a></p>
+<p>在動態系統中加入 run 頁面的 html 原始碼: <a href="https://mde.tw/cp2021_hw/downloads/run.txt">run.txt</a></p>
+<p>當你建立 Github 帳號後就可以利用 Gist 儲存資料或程式碼, 且可以利用 <a href="https://mde.tw/cp2021/content/run.html">https://mde.tw/cp2021/content/run.html</a> 來執行 Brython 程式.</p>
+<p>在 <a href="https://mde.tw/cp2021/content/run.html">run.html</a> 執行 Brython 程式, 可以使用下列三種方法:</p>
+<ol>
+<li>直接連線至 <a href="https://mde.tw/cp2021/content/run.html">https://mde.tw/cp2021/content/run.html</a> 將 Brython 程式寫在編輯區, 然後按下 Run.</li>
+<li>將 Brython 程式存在 Gist, 利用 run.html?src=Gist_URL, <a href="https://mde.tw/cp2021/content/run.html">run.html</a> 中的 Javascript 就會導入此 Gist 程式執行.</li>
+<li>將 Brython 程式寫在 <a href="https://mde.tw/cp2021/content/run.html">run.html</a> 頁面 html 超文件中, 然後安排其中的 Javascript 或 Brython 程式導入執行.</li>
+</ol>
+<p>建立可攜程式系統時必須了解 start_ipv4.bat 或 start_ipv6.bat 中的所有指令用法:</p>
+<p>以電腦輔助設計室中使用新電腦的 USB 可攜 Hybrid 設定 start_ipv4.bat 為例.</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">@echo off
+set Disk=y
+subst %Disk%: "data"
 
-// 將微分方程式 "dx / dt = (t - x)/2" 定義為 dxdt 函式
-dxdt(t, x) {
-  return ((t - x) / 2);
-}
+set Local=C:\2021_cadlab_portable\data
 
-// 定義 main() 主函式內容, 目的在利用 rungeKutta 函式
-// 解常微分方程式
-main() {
-// Driver method
-// num 資料型別可以是整數或雙浮點數
-  num t0 = 0;
-  num x = 1;
-  num t = 2;
-  double h = 0.2;
-  print('The value of x at t=$t is: ${rungeKutta(t0, x, t, h)}');
-}
-</pre>
+%Disk%:
+
+set HomePath=%Disk%:\home_ipv4
+set HomeDrive=%Disk%:\home_ipv4
+set Home=%Disk%:\home_ipv4
+set USERPROFILE=%Disk%:\home_ipv4
+
+REM 將系統 Python 程式的 io 設為 utf-8
+set PYTHONIOENCODING="utf-8"
+
+set PYTHONPATH=%Local%\Python395\DLLs;%Local%\Python395\Lib;%Local%\Python395\Lib\site-packages;
+
+set PYTHONHOME=%Local%\Python395
+
+REM 使用 putty 設定 git ssh 連線
+set GIT_SSH=%Disk%:\putty\plink.exe
+
+REM 設定跟 Python 有關的命令搜尋路徑
+set path_python=%Local%\Python395;%Local%\Python395\Scripts;
+set path_portablegit=%Local%\portablegit_2.31.1\bin;
+
+path=%Disk%:;%path_python%;%path_portablegit%;%path%;
+
+REM ref: https://drive.google.com/file/d/1S0XYN-1MKxo0KFYxs0pFTcTrr8NL4n1b/view
+
+REM REGEDIT.EXE /S %Disk%:\putty_github_com.reg;
+
+start /MIN cmd.exe
+start /MIN cmd.exe
+start /MIN cmd.exe
+start /MIN cmd.exe
+
+start /MIN %Disk%:\wScite\SciTE.exe
+start /MIN %Disk%:\wScite\SciTE.exe
+
+Exit</pre>
+<p>因為電腦 C:\ 中存放的可攜系統位於 C:\2021_cadlab_portable\data, 因此將此路徑設為 Local 變數, 然後與 Python 即 Portablegit 有關的路徑都使用 %Local% 變數設定.</p>
+<p>有關 SSH push 設定必須將 putty 系統登錄檔案匯出後, 在啟動隨身系統時載入所需設定. <a href="https://drive.google.com/file/d/1S0XYN-1MKxo0KFYxs0pFTcTrr8NL4n1b/view">putty 設定登錄檔案匯出與匯入說明影片</a>.</p>
+<p>Windows 指令:</p>
+<p style="padding-left: 30px;"><a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/echo">echo off</a>, 而放在前面的 <a href="https://stackoverflow.com/questions/8486042/what-does-mean-in-windows-batch-scripts">@ 指令說明</a>.</p>
+<p style="padding-left: 30px;"><a href="https://en.wikipedia.org/wiki/List_of_DOS_commands#SET">set</a>: 設定<a href="https://ss64.com/nt/syntax-variables.html">環境變數</a>.</p>
+<p style="padding-left: 30px;">HomePath, HomeDrive, Home, USERPROFILE 都屬於 Windows 操作系統的<a href="https://ss64.com/nt/syntax-variables.html">環境變數</a>.</p>
+<p><a href="https://mde.tw/cp2021_hw/content/run.html?src=https://gist.githubusercontent.com/mdecourse/3db55f124185def5aac8e5d51579c484/raw/cc346e5ed77c63051ea69c985b191d8bd3afc1fc/red_rect1.py">HW1-1</a>: 將左右碰撞移動的紅色方塊, 改為先移動到水平畫面中心點位置後, 接著上下碰撞移動.</p>
+<p><a href="https://mde.tw/cp2021_hw/content/run.html?src=https://gist.githubusercontent.com/mdecourse/3db55f124185def5aac8e5d51579c484/raw/cc346e5ed77c63051ea69c985b191d8bd3afc1fc/red_rect2_with_start_button.py">HW1-2</a>: 加入與 <a href="https://mde.tw/cp2021/content/Cango.html">Cango 頁面</a> Fourbar 程式碼相同功能的啟動按鈕, 讓使用者可以利用按鈕啟動或中斷紅色方塊上下碰撞移動. 完成後請將程式碼存入個人 Gist 區.</p>
+<hr/>
+<p>HW2 - 可攜程式系統與個人網站佔學期成績 20%.</p>
+<p><a href="https://github.com/mdecourse/cp2021/discussions/9">HW2 具體項目成果回報區</a></p>
+<p>可攜程式系統與 Python 範例程式收集整理</p>
+<p>1. 請準備一個至少 64 GB 大小的 USB 3.0 以上隨身碟 (或外接 SSD), 根據 <a href="https://mde.tw/cp2021/content/Task2.html">Task2</a> 中的說明, 建立自己的可攜程式系統.</p>
+<p>2. 請登入 Github 帳號後, 連線至 <a href="https://github.com/mdecourse/cp2021_hw">https://github.com/mdecourse/cp2021_hw</a> 後, 透過 <span style="background-color: #00ff00;">Use this template</span> 按鈕建立自己的 cp2021_hw 倉儲. 並至該倉儲的 Settings -&gt; Pages -&gt; Source 將 main 分支設為 Github Pages 的 root (也就是選擇將倉儲的 main 分支設為對應網站的根目錄).</p>
+<p>3. 請將 HW1 與 HW2 的作業內容登錄至個人的 cp2021_hw 倉儲與網站中. (學習如何透過 git 指令修改倉儲中的版本內容)</p>
+<p>4. 請在個人作業網站的 HW2 區域下增設一個 H2 頁面, 將該網頁標題命名為 run, 可以如 <a href="https://mde.tw/cp2021/content/run.html">run</a> 頁面中的內容, 並且利用此頁面收集 Python 範例程式. (例如: 可自動執行的貪食蛇: <a href="https://mde.tw/cp2021/content/run.html?src=https://gist.githubusercontent.com/mdecourse/d306a1f57e53bfd6466eaae20bcb9439/raw/2160a12b9fec9707a120a383ed5d38b9b78a02cf/snake.py">https://mde.tw/cp2021/content/run.html?src=https://gist.githubusercontent.com/mdecourse/d306a1f57e53bfd6466eaae20bcb9439/raw/2160a12b9fec9707a120a383ed5d38b9b78a02cf/snake.py</a> 將 <a href="https://gist.github.com/mdecourse/d306a1f57e53bfd6466eaae20bcb9439">https://gist.github.com/mdecourse/d306a1f57e53bfd6466eaae20bcb9439</a> 作為 <a href="https://mde.tw/cp2021/content/run.html">https://mde.tw/cp2021/content/run.html</a> 頁面中 src 變數的值, 就可以在頁面中導入程式碼並執行)</p>
+<p><br/>SSH push &lt;&lt; <a href="/get_page/HW2/SSH push.html">Previous</a> <a href="/get_page/HW2/Python.html">Next</a> &gt;&gt; Python</p>
+<!-- footer -->
+<div class="container">
+<div class="row pt-3 mx-auto">
+<p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --> Copyright ©
+<script>
+document.write(new Date().getFullYear());
+</script>
+All rights reserved | This template is made with <i aria-hidden="true" class="icon-heart"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a> <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+</div>
+</div>
+<!-- for footer -->
 <p></p>
-<br />上傳與引用圖片 << <a href='上傳與引用圖片.html'>Previous</a> <a href='嵌入影片檔.html'>Next</a> >> 嵌入影片檔</div>
+<!-- for site wrap -->
+<p></p>
+<!-- <script src="../cmsimde/static/chimper/js/jquery-3.3.1.min.js"></script> -->
+<script src="/get_page/cmsimde/static/chimper/js/jquery-migrate-3.0.1.min.js"></script>
+<script src="/get_page/cmsimde/static/chimper/js/jquery-ui.js"></script>
+<script src="/get_page/cmsimde/static/chimper/js/popper.min.js"></script>
+<script src="/get_page/cmsimde/static/chimper/js/bootstrap.min.js"></script>
+<script src="/get_page/cmsimde/static/chimper/js/owl.carousel.min.js"></script>
+<script src="/get_page/cmsimde/static/chimper/js/jquery.stellar.min.js"></script>
+<script src="/get_page/cmsimde/static/chimper/js/jquery.countdown.min.js"></script>
+<script src="/get_page/cmsimde/static/chimper/js/jquery.magnific-popup.min.js"></script>
+<script src="/get_page/cmsimde/static/chimper/js/bootstrap-datepicker.min.js"></script>
+<script src="/get_page/cmsimde/static/chimper/js/aos.js"></script>
+<!--
+            <script src="../cmsimde/static/chimper/js/typed.js"></script>
+                    <script>
+                    var typed = new Typed('.typed-words', {
+                    strings: ["Web Apps"," WordPress"," Mobile Apps"],
+                    typeSpeed: 80,
+                    backSpeed: 80,
+                    backDelay: 4000,
+                    startDelay: 1000,
+                    loop: true,
+                    showCursor: true
+                    });
+                    </script>
+            -->
+<script src="/get_page/cmsimde/static/chimper/js/main.js"></script>
+<!-- 啟用 LaTeX equations 編輯 -->
+<p></p>
+<!-- <script>
+  MathJax = {
+    tex: {inlineMath: [['$', '$'], ['\(', '\)']]}
+  };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>-->
+<br />run << <a href='run.html'>Previous</a> <a href='HW3.html'>Next</a> >> HW3</div>
         
     <!-- footer -->
       <div class="container">
